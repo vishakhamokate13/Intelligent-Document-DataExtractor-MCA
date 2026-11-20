@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DocExtract | Home</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">📄 DocExtract</div>
+    <span class="nav-text">Document Intelligence System</span>
+</nav>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="tag">SMART DOCUMENT PROCESSING</span>
+
+        <h1>
+            Intelligent Document
+            <span>Data Extractor</span>
+        </h1>
+
+        <p>
+            Extract text from your PDF documents
+            quickly and easily.
+        </p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="upload-card">
+
+            <div class="upload-icon">📁</div>
+
+            <h2>Upload Your Document</h2>
+
+            <p>Select a PDF file from your computer</p>
+
+            <form action="/extract"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+                <input
+                    type="file"
+                    name="file"
+                    accept=".pdf,application/pdf"
+                    required
+                >
+
+                <button type="submit">
+                    Extract Text →
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="features">
+
+            <div>📄 PDF Support</div>
+            <div>⚡ Fast Extraction</div>
+            <div>⬇️ Text Download</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>DocExtract | Python Flask MCA Project</p>
+</footer>
+
+</body>
+</html>

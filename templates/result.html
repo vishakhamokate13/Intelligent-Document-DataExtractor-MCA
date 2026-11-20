@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DocExtract | Result</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">📄 DocExtract</div>
+    <span class="nav-text">Extraction Result</span>
+</nav>
+
+<section class="result-section">
+
+    <div class="result-card">
+
+        <div class="success-icon">✓</div>
+
+        <h1>Extraction Successful!</h1>
+
+        <p class="subtitle">
+            Your document text has been extracted successfully.
+        </p>
+
+        <div class="file-info">
+
+            <div>
+                <span>Document</span>
+                <strong>{{ filename }}</strong>
+            </div>
+
+            <div>
+                <span>Total Pages</span>
+                <strong>{{ page_count }}</strong>
+            </div>
+
+        </div>
+
+        <h3>Extracted Text</h3>
+
+        <textarea id="resultText" readonly>{{ text }}</textarea>
+
+        <div class="result-buttons">
+
+            <form action="/download" method="POST">
+                <input type="hidden" name="text" value="{{ text }}">
+                <button type="submit">
+                    ⬇ Download Text
+                </button>
+            </form>
+
+            <a href="/" class="back-button">
+                ← Upload Another PDF
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>DocExtract | Python Flask MCA Project</p>
+</footer>
+
+</body>
+</html>
